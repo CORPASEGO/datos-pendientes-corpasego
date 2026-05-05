@@ -1072,40 +1072,48 @@ async function submitForm() {
   const beneficiarios = [];
   document.querySelectorAll('.beneficiary-card').forEach(card => {
     beneficiarios.push({
-      nombre: card.querySelector('.ben-nombre').value,
+      nombre:     card.querySelector('.ben-nombre').value,
       parentesco: card.querySelector('.ben-parentesco').value,
-      cedula: card.querySelector('.ben-cedula').value,
+      cedula:     card.querySelector('.ben-cedula').value,
       porcentaje: card.querySelector('.ben-pct').value,
     });
   });
 
   const payload = {
-    cedula: document.getElementById('cedula').value,
-    edad: document.getElementById('edad').value,
-    altura: document.getElementById('altura').value,
-    pesoLibras: lbs,
-    pesoKg: kg,
-    profesion: document.getElementById('profesion').value,
-    ocupacion: document.getElementById('ocupacion').value,
-    ruc: document.getElementById('ruc').value,
+    cedula:       document.getElementById('cedula').value,
+    edad:         document.getElementById('edad').value,
+    altura:       document.getElementById('altura').value,
+    pesoLibras:   lbs,
+    pesoKg:       kg,
+    profesion:    document.getElementById('profesion').value,
+    ocupacion:    document.getElementById('ocupacion').value,
+    ruc:          document.getElementById('ruc').value,
     beneficiarios: JSON.stringify(beneficiarios),
-    timestamp: new Date().toISOString(),
-    referencia: document.getElementById('cedula').value,
+    timestamp:    new Date().toISOString(),
+    referencia:   document.getElementById('cedula').value,
   };
 
   try {
-    const formData = new FormData();
-    formData.append('data', JSON.stringify(payload));
-    await fetch(APPS_SCRIPT_URL, { method: 'POST', body: formData });
+    // ✅ Envío como JSON crudo (compatible con el Apps Script corregido)
+    const resp = await fetch(APPS_SCRIPT_URL, {
+      method:   'POST',
+      headers:  { 'Content-Type': 'application/json' },
+      body:     JSON.stringify(payload),
+      redirect: 'follow',
+    });
+    const result = await resp.json();
+    if (!result.ok) console.error('Apps Script error:', result.error);
   } catch(e) {
     console.error('Error al enviar:', e);
   }
 
   await new Promise(r => setTimeout(r, 1500));
   document.getElementById('loadingOverlay').classList.remove('show');
-  document.getElementById('formCard').querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
+  document.getElementById('formCard').querySelectorAll('.form-step')
+    .forEach(s => s.classList.add('hidden'));
   document.getElementById('navButtons').classList.add('hidden');
-  document.getElementById('successRef').textContent = 'Cédula de referencia: ' + payload.referencia;
+  document.getElementById('successRef').textContent =
+    'Cédula de referencia: ' + payload.referencia;
   document.getElementById('successScreen').classList.add('show');
   document.getElementById('progressFill').style.width = '100%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
