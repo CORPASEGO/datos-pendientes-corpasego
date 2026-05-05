@@ -1080,40 +1080,37 @@ async function submitForm() {
   });
 
   const payload = {
-    cedula:       document.getElementById('cedula').value,
-    edad:         document.getElementById('edad').value,
-    altura:       document.getElementById('altura').value,
-    pesoLibras:   lbs,
-    pesoKg:       kg,
-    profesion:    document.getElementById('profesion').value,
-    ocupacion:    document.getElementById('ocupacion').value,
-    ruc:          document.getElementById('ruc').value,
+    cedula:        document.getElementById('cedula').value,
+    edad:          document.getElementById('edad').value,
+    altura:        document.getElementById('altura').value,
+    pesoLibras:    lbs,
+    pesoKg:        kg,
+    profesion:     document.getElementById('profesion').value,
+    ocupacion:     document.getElementById('ocupacion').value,
+    ruc:           document.getElementById('ruc').value,
     beneficiarios: JSON.stringify(beneficiarios),
-    timestamp:    new Date().toISOString(),
-    referencia:   document.getElementById('cedula').value,
+    timestamp:     new Date().toISOString(),
   };
 
   try {
-    // ✅ Envío como JSON crudo (compatible con el Apps Script corregido)
-    const resp = await fetch(APPS_SCRIPT_URL, {
-      method:   'POST',
-      headers:  { 'Content-Type': 'application/json' },
-      body:     JSON.stringify(payload),
-      redirect: 'follow',
+    // ← CORS fix: no-cors mode, Apps Script igual recibe los datos
+    await fetch(APPS_SCRIPT_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body:    JSON.stringify(payload),
     });
-    const result = await resp.json();
-    if (!result.ok) console.error('Apps Script error:', result.error);
   } catch(e) {
-    console.error('Error al enviar:', e);
+    console.error('fetch error:', e);
   }
 
-  await new Promise(r => setTimeout(r, 1500));
+  await new Promise(r => setTimeout(r, 2000));
   document.getElementById('loadingOverlay').classList.remove('show');
   document.getElementById('formCard').querySelectorAll('.form-step')
     .forEach(s => s.classList.add('hidden'));
   document.getElementById('navButtons').classList.add('hidden');
   document.getElementById('successRef').textContent =
-    'Cédula de referencia: ' + payload.referencia;
+    'Cédula de referencia: ' + payload.cedula;
   document.getElementById('successScreen').classList.add('show');
   document.getElementById('progressFill').style.width = '100%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
