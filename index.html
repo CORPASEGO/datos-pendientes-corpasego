@@ -60,20 +60,7 @@
     text-align: center;
     box-shadow: 0 2px 16px rgba(26,18,8,0.08);
   }
-  .logo-box {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .header-tagline {
-    font-family: 'Merriweather', serif;
-    color: var(--gray-400);
-    font-size: 0.82rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-top: 8px;
-    font-style: italic;
-  }
+  .logo-box { display: inline-flex; align-items: center; gap: 16px; }
 
   /* ── PROGRESS ── */
   .progress-wrap {
@@ -152,11 +139,7 @@
   }
   .step-dot.active .step-label { color: var(--orange-dark); }
   .step-dot.done .step-label { color: var(--orange); }
-  .progress-bar-line {
-    height: 4px;
-    background: var(--gray-100);
-    margin-top: 12px;
-  }
+  .progress-bar-line { height: 4px; background: var(--gray-100); margin-top: 12px; }
   .progress-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--orange-dark), var(--orange-light));
@@ -164,11 +147,7 @@
   }
 
   /* ── FORM WRAPPER ── */
-  .form-outer {
-    display: flex;
-    justify-content: center;
-    padding: 36px 16px 80px;
-  }
+  .form-outer { display: flex; justify-content: center; padding: 36px 16px 80px; }
   .form-card {
     background: var(--white);
     border-radius: 16px;
@@ -222,6 +201,22 @@
     font-weight: 900;
     text-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
+
+  /* BENEFICIARIOS: título grande centrado dentro del header */
+  .beneficiarios-principal {
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    width: 100%;
+  }
+  @media (max-width: 560px) {
+    .beneficiarios-principal { font-size: 1.5rem; }
+  }
+
   .section-subtitle {
     color: rgba(255,255,255,0.88);
     font-size: 0.95rem;
@@ -250,7 +245,6 @@
   input[type="email"],
   input[type="tel"],
   input[type="number"],
-  input[type="date"],
   textarea,
   select {
     width: 100%;
@@ -283,6 +277,33 @@
     cursor: pointer;
   }
 
+  /* ── SELECTORES DE FECHA ── */
+  .date-selector {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1.3fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .date-selector select {
+    width: 100%;
+    font-size: 1rem;
+    padding: 14px 12px;
+  }
+  .date-part-label {
+    font-size: 0.7rem;
+    color: var(--gray-400);
+    text-align: center;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 420px) {
+    .date-selector { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .date-selector select { font-size: 0.92rem; padding: 13px 6px; }
+  }
+
   .field-error {
     font-size: 0.84rem;
     color: var(--error);
@@ -291,12 +312,7 @@
     font-weight: 600;
   }
   .field-error.show { display: block; }
-  .field-hint {
-    font-size: 0.82rem;
-    color: var(--gray-400);
-    margin-top: 5px;
-    font-weight: 500;
-  }
+  .field-hint { font-size: 0.82rem; color: var(--gray-400); margin-top: 5px; font-weight: 500; }
 
   /* ── GRID ── */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -322,11 +338,7 @@
   .info-box li { margin-bottom: 6px; }
 
   /* ── SECTION DIVIDER ── */
-  .sub-section {
-    border-top: 2px solid var(--gray-100);
-    margin: 30px 0 26px;
-    padding-top: 26px;
-  }
+  .sub-section { border-top: 2px solid var(--gray-100); margin: 30px 0 26px; padding-top: 26px; }
   .sub-section-title {
     font-size: 0.78rem;
     font-weight: 800;
@@ -338,14 +350,9 @@
     align-items: center;
     gap: 10px;
   }
-  .sub-section-title::after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background: var(--gray-100);
-  }
+  .sub-section-title::after { content: ''; flex: 1; height: 2px; background: var(--gray-100); }
 
-  /* ── BENEFICIARIES ── */
+  /* ── BENEFICIARIOS ── */
   .beneficiary-card {
     border: 2px solid var(--gray-200);
     border-radius: var(--radius);
@@ -361,11 +368,16 @@
     align-items: center;
     justify-content: space-between;
   }
+  /* Título "Beneficiario N" grande y legible en móvil */
   .beneficiary-title {
     font-family: 'Merriweather', serif;
     color: var(--white);
-    font-size: 1.05rem;
+    font-size: 1.35rem;
     font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 560px) {
+    .beneficiary-title { font-size: 1.2rem; }
   }
   .btn-remove {
     background: rgba(255,255,255,0.2);
@@ -395,13 +407,7 @@
     flex-wrap: wrap;
   }
   .pct-label { font-size: 0.76rem; color: var(--gray-600); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-  .pct-value {
-    font-family: 'Merriweather', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    line-height: 1;
-    transition: color var(--transition);
-  }
+  .pct-value { font-family: 'Merriweather', serif; font-size: 2.2rem; font-weight: 900; line-height: 1; transition: color var(--transition); }
   .pct-value.ok { color: var(--success); }
   .pct-value.warn { color: var(--orange); }
   .pct-value.over { color: var(--error); }
@@ -476,11 +482,7 @@
   .btn-submit { padding: 15px 40px; }
 
   /* ── SUCCESS SCREEN ── */
-  .success-screen {
-    display: none;
-    text-align: center;
-    padding: 70px 44px 60px;
-  }
+  .success-screen { display: none; text-align: center; padding: 70px 44px 60px; }
   .success-screen.show { display: block; }
   .success-ring {
     width: 88px; height: 88px;
@@ -492,17 +494,8 @@
     box-shadow: 0 8px 32px rgba(245,168,0,0.35);
     animation: popIn 0.5s cubic-bezier(0.4,0,0.2,1);
   }
-  @keyframes popIn {
-    from { transform: scale(0.5); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-  .success-screen h2 {
-    font-family: 'Merriweather', serif;
-    color: var(--dark);
-    font-size: 2.1rem;
-    margin-bottom: 16px;
-    font-weight: 900;
-  }
+  @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-screen h2 { font-family: 'Merriweather', serif; color: var(--dark); font-size: 2.1rem; margin-bottom: 16px; font-weight: 900; }
   .success-screen p { color: var(--gray-600); line-height: 1.8; font-size: 1.05rem; font-weight: 500; }
   .success-ref {
     display: inline-block;
@@ -542,12 +535,7 @@
 
   /* ── RESUMEN ── */
   .resumen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .resumen-item {
-    background: var(--gray-50);
-    border: 1.5px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
+  .resumen-item { background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; }
   .resumen-key { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-400); font-weight: 700; margin-bottom: 4px; }
   .resumen-val { font-size: 0.96rem; color: var(--dark); font-weight: 600; }
   .resumen-ben {
@@ -636,12 +624,26 @@
       </div>
       <div class="section-body">
 
+        <!-- Nombres -->
+        <div class="field">
+          <label class="field-label" for="nombres">Apellidos y Nombres Completos <span class="req">✦</span></label>
+          <input type="text" id="nombres" placeholder="Ej: Gómez Pérez Juan Carlos">
+          <div class="field-error" id="err-nombres">Ingrese sus nombres completos.</div>
+        </div>
+
         <!-- Cédula -->
         <div class="field">
           <label class="field-label" for="cedula">Número de Cédula <span class="req">✦</span></label>
           <input type="text" id="cedula" placeholder="0912345678" maxlength="10" inputmode="numeric">
           <div class="field-error" id="err-cedula">Ingrese una cédula ecuatoriana válida (10 dígitos).</div>
           <div class="field-hint">10 dígitos numéricos sin espacios ni guiones.</div>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label class="field-label" for="email">Correo Electrónico <span class="req">✦</span></label>
+          <input type="email" id="email" placeholder="correo@ejemplo.com">
+          <div class="field-error" id="err-email">Ingrese un correo electrónico válido.</div>
         </div>
 
         <!-- Edad -->
@@ -680,16 +682,23 @@
           </div>
           <div class="field">
             <label class="field-label" for="ocupacion">Ocupación <span class="req">✦</span></label>
-            <input type="text" id="ocupacion" placeholder="Ej: Gerente de Proyectos">
+            <input type="text" id="ocupacion" placeholder="Ej: Sector privado">
             <div class="field-error" id="err-ocupacion">Ingrese su ocupación actual.</div>
           </div>
         </div>
 
-        <!-- RUC -->
+        <!-- Rol que desempeña -->
         <div class="field">
-          <label class="field-label" for="ruc">RUC <span class="req">✦</span></label>
-          <input type="text" id="ruc" placeholder="0912345678001" maxlength="13" inputmode="numeric">
-          <div class="field-error" id="err-ruc">Ingrese un RUC válido (13 dígitos).</div>
+          <label class="field-label" for="rolDesempena">Rol que desempeña <span class="req">✦</span></label>
+          <input type="text" id="rolDesempena" placeholder="Ej: Gerente de Proyectos, Vendedor, Docente...">
+          <div class="field-error" id="err-rolDesempena">Ingrese el rol que desempeña.</div>
+        </div>
+
+        <!-- RUC Empresa -->
+        <div class="field">
+          <label class="field-label" for="rucEmpresa">RUC Empresa <span class="req">✦</span></label>
+          <input type="text" id="rucEmpresa" placeholder="0912345678001" maxlength="13" inputmode="numeric">
+          <div class="field-error" id="err-rucEmpresa">Ingrese un RUC válido (13 dígitos).</div>
           <div class="field-hint">Si no tiene RUC, ingrese su cédula seguida de 001.</div>
         </div>
 
@@ -700,7 +709,8 @@
     <div class="form-step hidden" id="step-2">
       <div class="section-header">
         <div class="section-number">Sección 2 de 3 · Beneficiarios</div>
-        <div class="section-title">Beneficiarios del Seguro</div>
+        <!-- BENEFICIARIOS: centrado, grande, destacado -->
+        <div class="section-title beneficiarios-principal">BENEFICIARIOS</div>
         <div class="section-subtitle">El porcentaje total de todos los beneficiarios debe sumar exactamente 100%.</div>
       </div>
       <div class="section-body">
@@ -760,7 +770,7 @@
 </div><!-- /form-outer -->
 
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycuMtwmgKBwD8p7ERgStXkkghCFMtH1cxerStN3wO77uOOxHyiBYAmCb92SA_-uoWcow/exec'; 
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-0aEs7dEB40r3WGD8bz-tuO5_HBvYSKlXtWoakqPazgMr5n4sAm0-4y0kf5GRcqXKPA/exec';
 
 const STEPS = [
   { label: 'Inicio' },
@@ -769,244 +779,341 @@ const STEPS = [
   { label: 'Confirmar' },
 ];
 
-let currentStep = 0;
+let currentStep      = 0;
 let beneficiaryCount = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
+// ── HELPERS DE FECHA ─────────────────────────────────────────
+function llenarDias(selectId, mes, anio) {
+  var sel = document.getElementById(selectId);
+  var valorActual = sel.value;
+  sel.innerHTML = '<option value="">--</option>';
+  var diasMax = 31;
+  if (mes) {
+    var m = parseInt(mes);
+    var y = anio ? parseInt(anio) : 2000;
+    diasMax = new Date(y, m, 0).getDate();
+  }
+  for (var d = 1; d <= diasMax; d++) {
+    var opt = document.createElement('option');
+    opt.value = String(d).padStart(2, '0');
+    opt.textContent = d;
+    if (opt.value === valorActual) opt.selected = true;
+    sel.appendChild(opt);
+  }
+}
+
+function llenarAniosPasados(selectId, desde, hasta) {
+  var sel = document.getElementById(selectId);
+  sel.innerHTML = '<option value="">----</option>';
+  for (var y = hasta; y >= desde; y--) {
+    var opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y;
+    sel.appendChild(opt);
+  }
+}
+
+// Inicializar selectores de fecha en beneficiarios
+function llenarSelectorFechaBen(card, n) {
+  llenarDias('benFechaDia_' + n, '', '');
+  llenarAniosPasados('benFechaAnio_' + n, 1920, new Date().getFullYear());
+
+  card.querySelector('#benFechaMes_' + n).addEventListener('change', function() {
+    llenarDias('benFechaDia_' + n,
+      card.querySelector('#benFechaMes_' + n).value,
+      card.querySelector('#benFechaAnio_' + n).value);
+    actualizarFechaBen(n);
+  });
+  card.querySelector('#benFechaAnio_' + n).addEventListener('change', function() {
+    llenarDias('benFechaDia_' + n,
+      card.querySelector('#benFechaMes_' + n).value,
+      card.querySelector('#benFechaAnio_' + n).value);
+    actualizarFechaBen(n);
+  });
+  card.querySelector('#benFechaDia_' + n).addEventListener('change', function() {
+    actualizarFechaBen(n);
+  });
+}
+
+function actualizarFechaBen(n) {
+  var d   = document.getElementById('benFechaDia_' + n)?.value;
+  var m   = document.getElementById('benFechaMes_' + n)?.value;
+  var y   = document.getElementById('benFechaAnio_' + n)?.value;
+  var hid = document.getElementById('benFechaNac_' + n);
+  if (hid) hid.value = (d && m && y) ? (y + '-' + m + '-' + d) : '';
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
   buildProgress();
   updateProgress();
   addBeneficiary();
-  ['altura','peso'].forEach(id => {
+  ['altura','peso'].forEach(function(id) {
     document.getElementById(id).addEventListener('input', updateIMC);
   });
 });
 
+// ── PROGRESS ─────────────────────────────────────────────────
 function buildProgress() {
-  document.getElementById('progressSteps').innerHTML = STEPS.map((s, i) => `
-    <div class="step-dot ${i===0?'active':''}" id="sdot-${i}">
-      <div class="step-circle">${i+1}</div>
-      <div class="step-label">${s.label}</div>
-    </div>
-  `).join('');
+  document.getElementById('progressSteps').innerHTML = STEPS.map(function(s, i) {
+    return '<div class="step-dot ' + (i===0?'active':'') + '" id="sdot-' + i + '">' +
+      '<div class="step-circle">' + (i+1) + '</div>' +
+      '<div class="step-label">' + s.label + '</div>' +
+      '</div>';
+  }).join('');
 }
 
 function updateProgress() {
-  STEPS.forEach((_, i) => {
-    const d = document.getElementById(`sdot-${i}`);
+  STEPS.forEach(function(_, i) {
+    var d = document.getElementById('sdot-' + i);
     d.className = 'step-dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
   });
-  const pct = (currentStep / (STEPS.length - 1)) * 100;
+  var pct = (currentStep / (STEPS.length - 1)) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('btnBack').disabled = currentStep === 0;
-  const isLast = currentStep === STEPS.length - 1;
-  const btn = document.getElementById('btnNext');
+  var isLast = currentStep === STEPS.length - 1;
+  var btn = document.getElementById('btnNext');
   btn.textContent = isLast ? '✓ Enviar Solicitud' : 'Siguiente →';
   btn.className = isLast ? 'btn-submit' : 'btn-next';
 }
 
-function hideErr(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('show');
-}
-function showErr(id, msg) {
-  const el = document.getElementById(id);
-  if (el) { if (msg) el.textContent = msg; el.classList.add('show'); }
-}
-function markErr(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.add('error');
-}
-function clearErr(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('error');
-}
+// ── HELPERS ───────────────────────────────────────────────────
+function hideErr(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
+function showErr(id, msg) { var el = document.getElementById(id); if (el) { if (msg) el.textContent = msg; el.classList.add('show'); } }
+function markErr(id) { var el = document.getElementById(id); if (el) el.classList.add('error'); }
+function clearErr(id) { var el = document.getElementById(id); if (el) el.classList.remove('error'); }
 
 function validateCedula(cedula) {
   if (!/^\d{10}$/.test(cedula)) return false;
-  const prov = parseInt(cedula.substring(0, 2));
+  var prov = parseInt(cedula.substring(0, 2));
   if (prov < 1 || prov > 24) return false;
-  const digits = cedula.split('').map(Number);
-  const verifier = digits[9];
-  const sum = digits.slice(0, 9).reduce((acc, d, i) => {
-    let val = i % 2 === 0 ? d * 2 : d;
+  var digits   = cedula.split('').map(Number);
+  var verifier = digits[9];
+  var sum = digits.slice(0, 9).reduce(function(acc, d, i) {
+    var val = i % 2 === 0 ? d * 2 : d;
     if (val > 9) val -= 9;
     return acc + val;
   }, 0);
-  const mod = sum % 10;
-  const check = mod === 0 ? 0 : 10 - mod;
+  var mod   = sum % 10;
+  var check = mod === 0 ? 0 : 10 - mod;
   return check === verifier;
 }
 
 function updateIMC() {
-  const h = parseFloat(document.getElementById('altura').value);
-  const lbs = parseFloat(document.getElementById('peso').value);
-  const box = document.getElementById('imcDisplay');
+  var h   = parseFloat(document.getElementById('altura').value);
+  var lbs = parseFloat(document.getElementById('peso').value);
+  var box = document.getElementById('imcDisplay');
   if (h > 0.5 && lbs > 0) {
-    const kg = lbs * 0.453592;
-    const imc = kg / (h * h);
-    let cat = '', color = '';
-    if (imc < 18.5) { cat = 'Bajo peso'; color = '#E67E22'; }
-    else if (imc < 25) { cat = 'Normal'; color = 'var(--success)'; }
+    var kg  = lbs * 0.453592;
+    var imc = kg / (h * h);
+    var cat = '', color = '';
+    if (imc < 18.5)    { cat = 'Bajo peso'; color = '#E67E22'; }
+    else if (imc < 25) { cat = 'Normal';    color = 'var(--success)'; }
     else if (imc < 30) { cat = 'Sobrepeso'; color = '#E67E22'; }
-    else { cat = 'Obesidad'; color = 'var(--error)'; }
-    box.innerHTML = `Peso en kg: <strong>${kg.toFixed(1)} kg</strong> &nbsp;·&nbsp; IMC: <strong style="color:${color}">${imc.toFixed(1)} — ${cat}</strong>`;
+    else               { cat = 'Obesidad';  color = 'var(--error)'; }
+    box.innerHTML = 'Peso en kg: <strong>' + kg.toFixed(1) + ' kg</strong> &nbsp;·&nbsp; IMC: <strong style="color:' + color + '">' + imc.toFixed(1) + ' — ' + cat + '</strong>';
     box.classList.remove('hidden');
   } else {
     box.classList.add('hidden');
   }
 }
 
+// ── BENEFICIARIOS ─────────────────────────────────────────────
 function addBeneficiary() {
   beneficiaryCount++;
-  const n = beneficiaryCount;
-  const container = document.getElementById('beneficiariosList');
-  const div = document.createElement('div');
+  var n = beneficiaryCount;
+  var container = document.getElementById('beneficiariosList');
+  var div = document.createElement('div');
   div.className = 'beneficiary-card';
-  div.id = `ben-${n}`;
-  div.innerHTML = `
-    <div class="beneficiary-header">
-      <div class="beneficiary-title">Beneficiario ${n}</div>
-      ${n > 1 ? `<button class="btn-remove" onclick="removeBeneficiary(${n})">✕ Eliminar</button>` : ''}
-    </div>
-    <div class="beneficiary-body">
-      <div class="two-col">
-        <div class="field">
-          <label class="field-label">Nombres y Apellidos <span class="req">✦</span></label>
-          <input type="text" class="ben-nombre" placeholder="Nombre completo">
-        </div>
-        <div class="field">
-          <label class="field-label">Parentesco <span class="req">✦</span></label>
-          <select class="ben-parentesco">
-            <option value="">Seleccione...</option>
-            <option>Cónyuge</option><option>Hijo/a</option><option>Padre</option>
-            <option>Madre</option><option>Hermano/a</option><option>Otro</option>
-          </select>
-        </div>
-      </div>
-      <div class="two-col">
-        <div class="field">
-          <label class="field-label">Cédula <span class="req">✦</span></label>
-          <input type="text" class="ben-cedula" placeholder="0912345678" maxlength="10" inputmode="numeric">
-          <div class="field-error ben-cedula-err"></div>
-        </div>
-        <div class="field" style="max-width:100%;">
-          <label class="field-label">Porcentaje (%) <span class="req">✦</span></label>
-          <input type="number" class="ben-pct" placeholder="Ej: 50" min="1" max="100" oninput="updatePctDisplay()">
-        </div>
-      </div>
-    </div>`;
+  div.id = 'ben-' + n;
+  div.innerHTML =
+    '<div class="beneficiary-header">' +
+      '<div class="beneficiary-title">Beneficiario ' + n + '</div>' +
+      (n > 1 ? '<button class="btn-remove" onclick="removeBeneficiary(' + n + ')">✕ Eliminar</button>' : '') +
+    '</div>' +
+    '<div class="beneficiary-body">' +
+      '<div class="two-col">' +
+        '<div class="field">' +
+          '<label class="field-label">Nombres y Apellidos <span class="req">✦</span></label>' +
+          '<input type="text" class="ben-nombre" placeholder="Nombre completo">' +
+        '</div>' +
+        '<div class="field">' +
+          '<label class="field-label">Parentesco <span class="req">✦</span></label>' +
+          '<select class="ben-parentesco">' +
+            '<option value="">Seleccione...</option>' +
+            '<option>Cónyuge</option><option>Hijo/a</option><option>Padre</option>' +
+            '<option>Madre</option><option>Hermano/a</option><option>Otro</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+      '<div class="two-col">' +
+        '<div class="field">' +
+          '<label class="field-label">Cédula <span class="req">✦</span></label>' +
+          '<input type="text" class="ben-cedula" placeholder="0912345678" maxlength="10" inputmode="numeric">' +
+          '<div class="field-error ben-cedula-err"></div>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label class="field-label">Fecha de Nacimiento <span class="req">✦</span></label>' +
+          '<div class="date-selector">' +
+            '<div>' +
+              '<span class="date-part-label">Día</span>' +
+              '<select id="benFechaDia_' + n + '"><option value="">--</option></select>' +
+            '</div>' +
+            '<div>' +
+              '<span class="date-part-label">Mes</span>' +
+              '<select id="benFechaMes_' + n + '">' +
+                '<option value="">-- Mes --</option>' +
+                '<option value="01">Enero</option><option value="02">Febrero</option>' +
+                '<option value="03">Marzo</option><option value="04">Abril</option>' +
+                '<option value="05">Mayo</option><option value="06">Junio</option>' +
+                '<option value="07">Julio</option><option value="08">Agosto</option>' +
+                '<option value="09">Septiembre</option><option value="10">Octubre</option>' +
+                '<option value="11">Noviembre</option><option value="12">Diciembre</option>' +
+              '</select>' +
+            '</div>' +
+            '<div>' +
+              '<span class="date-part-label">Año</span>' +
+              '<select id="benFechaAnio_' + n + '"><option value="">----</option></select>' +
+            '</div>' +
+          '</div>' +
+          '<input type="hidden" id="benFechaNac_' + n + '" class="ben-fechanac">' +
+          '<div class="field-error ben-fechanac-err"></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="field" style="max-width:100%;">' +
+        '<label class="field-label">Porcentaje (%) <span class="req">✦</span></label>' +
+        '<input type="number" class="ben-pct" placeholder="Ej: 50" min="1" max="100" oninput="updatePctDisplay()">' +
+      '</div>' +
+    '</div>';
   container.appendChild(div);
+  llenarSelectorFechaBen(div, n);
   updatePctDisplay();
 }
 
 function removeBeneficiary(id) {
-  document.getElementById(`ben-${id}`).remove();
+  document.getElementById('ben-' + id).remove();
   updatePctDisplay();
 }
 
 function calcTotal() {
-  let t = 0;
-  document.querySelectorAll('.ben-pct').forEach(i => {
-    const v = parseFloat(i.value);
+  var t = 0;
+  document.querySelectorAll('.ben-pct').forEach(function(i) {
+    var v = parseFloat(i.value);
     if (!isNaN(v)) t += v;
   });
   return Math.round(t * 100) / 100;
 }
 
 function updatePctDisplay() {
-  const total = calcTotal();
-  const pctVal = document.getElementById('pctValue');
-  const pctBar = document.getElementById('pctBar');
-  const pctMsg = document.getElementById('pctMsg');
+  var total  = calcTotal();
+  var pctVal = document.getElementById('pctValue');
+  var pctBar = document.getElementById('pctBar');
+  var pctMsg = document.getElementById('pctMsg');
   pctVal.textContent = total + '%';
   pctBar.style.width = Math.min(total, 100) + '%';
-  const cls = total === 100 ? 'ok' : total > 100 ? 'over' : 'warn';
-  ['ok','warn','over'].forEach(c => {
+  var cls = total === 100 ? 'ok' : total > 100 ? 'over' : 'warn';
+  ['ok','warn','over'].forEach(function(c) {
     pctVal.classList.toggle(c, c===cls);
     pctBar.classList.toggle(c, c===cls);
     pctMsg.classList.toggle(c, c===cls);
   });
-  if (total === 100) pctMsg.textContent = '✓ ¡Perfecto! Los porcentajes suman 100%';
-  else if (total > 100) pctMsg.textContent = `Excede en ${(total-100).toFixed(2)}%. Reduzca algún porcentaje.`;
-  else pctMsg.textContent = `Faltan ${(100-total).toFixed(2)}% para completar el 100%.`;
+  if      (total === 100) pctMsg.textContent = '✓ ¡Perfecto! Los porcentajes suman 100%';
+  else if (total >  100) pctMsg.textContent = 'Excede en ' + (total-100).toFixed(2) + '%. Reduzca algún porcentaje.';
+  else                    pctMsg.textContent = 'Faltan ' + (100-total).toFixed(2) + '% para completar el 100%.';
 }
 
 function toggleAcepto() {
-  const cb = document.getElementById('checkAcepto');
-  const lbl = document.getElementById('labelAcepto');
+  var cb  = document.getElementById('checkAcepto');
+  var lbl = document.getElementById('labelAcepto');
   cb.checked = !cb.checked;
   lbl.style.borderColor = cb.checked ? 'var(--orange)' : '';
-  lbl.style.background = cb.checked ? 'var(--orange-pale)' : '';
+  lbl.style.background  = cb.checked ? 'var(--orange-pale)' : '';
   if (cb.checked) hideErr('err-acepto');
 }
 function toggleDatos() {
-  const cb = document.getElementById('checkDatos');
-  const lbl = document.getElementById('labelDatos');
+  var cb  = document.getElementById('checkDatos');
+  var lbl = document.getElementById('labelDatos');
   cb.checked = !cb.checked;
   lbl.style.borderColor = cb.checked ? 'var(--orange)' : '';
-  lbl.style.background = cb.checked ? 'var(--orange-pale)' : '';
+  lbl.style.background  = cb.checked ? 'var(--orange-pale)' : '';
   if (cb.checked) hideErr('err-datos');
 }
 
+// ── VALIDACIÓN ────────────────────────────────────────────────
 function validateStep(step) {
-  let ok = true;
+  var ok = true;
 
   if (step === 1) {
+    // Nombres
+    var nom = document.getElementById('nombres').value.trim();
+    if (!nom) { showErr('err-nombres', 'Ingrese sus nombres completos.'); markErr('nombres'); ok = false; }
+    else { hideErr('err-nombres'); clearErr('nombres'); }
+
     // Cédula
-    const ced = document.getElementById('cedula').value.trim();
+    var ced = document.getElementById('cedula').value.trim();
     if (!validateCedula(ced)) { showErr('err-cedula'); markErr('cedula'); ok = false; }
     else { hideErr('err-cedula'); clearErr('cedula'); }
 
+    // Email
+    var eml = document.getElementById('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eml)) { showErr('err-email', 'Ingrese un correo electrónico válido.'); markErr('email'); ok = false; }
+    else { hideErr('err-email'); clearErr('email'); }
+
     // Edad
-    const edad = parseInt(document.getElementById('edad').value);
+    var edad = parseInt(document.getElementById('edad').value);
     if (!edad || edad < 18 || edad > 75) { showErr('err-edad'); markErr('edad'); ok = false; }
     else { hideErr('err-edad'); clearErr('edad'); }
 
     // Altura
-    const alt = parseFloat(document.getElementById('altura').value);
+    var alt = parseFloat(document.getElementById('altura').value);
     if (!alt || alt < 1 || alt > 2.5) { showErr('err-altura'); markErr('altura'); ok = false; }
     else { hideErr('err-altura'); clearErr('altura'); }
 
     // Peso
-    const lbs = parseFloat(document.getElementById('peso').value);
+    var lbs = parseFloat(document.getElementById('peso').value);
     if (!lbs || lbs < 44 || lbs > 660) { showErr('err-peso'); markErr('peso'); ok = false; }
     else { hideErr('err-peso'); clearErr('peso'); }
 
     // Profesión
-    const prof = document.getElementById('profesion').value.trim();
+    var prof = document.getElementById('profesion').value.trim();
     if (!prof) { showErr('err-profesion', 'Ingrese su profesión.'); markErr('profesion'); ok = false; }
     else { hideErr('err-profesion'); clearErr('profesion'); }
 
     // Ocupación
-    const ocup = document.getElementById('ocupacion').value.trim();
+    var ocup = document.getElementById('ocupacion').value.trim();
     if (!ocup) { showErr('err-ocupacion', 'Ingrese su ocupación.'); markErr('ocupacion'); ok = false; }
     else { hideErr('err-ocupacion'); clearErr('ocupacion'); }
 
-    // RUC
-    const ruc = document.getElementById('ruc').value.trim();
-    if (!/^\d{13}$/.test(ruc)) { showErr('err-ruc', 'Ingrese un RUC válido (13 dígitos).'); markErr('ruc'); ok = false; }
-    else { hideErr('err-ruc'); clearErr('ruc'); }
+    // Rol
+    var rol = document.getElementById('rolDesempena').value.trim();
+    if (!rol) { showErr('err-rolDesempena', 'Ingrese el rol que desempeña.'); markErr('rolDesempena'); ok = false; }
+    else { hideErr('err-rolDesempena'); clearErr('rolDesempena'); }
+
+    // RUC Empresa
+    var ruc = document.getElementById('rucEmpresa').value.trim();
+    if (!/^\d{13}$/.test(ruc)) { showErr('err-rucEmpresa', 'Ingrese un RUC válido (13 dígitos).'); markErr('rucEmpresa'); ok = false; }
+    else { hideErr('err-rucEmpresa'); clearErr('rucEmpresa'); }
   }
 
   if (step === 2) {
-    const cards = document.querySelectorAll('.beneficiary-card');
-    if (cards.length === 0) { showErr('err-beneficiarios','Agregue al menos un beneficiario.'); ok = false; }
+    var cards = document.querySelectorAll('.beneficiary-card');
+    if (cards.length === 0) { showErr('err-beneficiarios', 'Agregue al menos un beneficiario.'); ok = false; }
     else {
-      const total = calcTotal();
-      if (total !== 100) { showErr('err-beneficiarios', `Los porcentajes suman ${total}%. Deben sumar exactamente 100%.`); ok = false; }
+      var total = calcTotal();
+      if (total !== 100) { showErr('err-beneficiarios', 'Los porcentajes suman ' + total + '%. Deben sumar exactamente 100%.'); ok = false; }
       else hideErr('err-beneficiarios');
-      cards.forEach(card => {
-        const nombre = card.querySelector('.ben-nombre');
+      cards.forEach(function(card) {
+        var nombre = card.querySelector('.ben-nombre');
         if (!nombre.value.trim()) { nombre.classList.add('error'); ok = false; } else nombre.classList.remove('error');
-        const par = card.querySelector('.ben-parentesco');
+        var par = card.querySelector('.ben-parentesco');
         if (!par.value) { par.classList.add('error'); ok = false; } else par.classList.remove('error');
-        const ced = card.querySelector('.ben-cedula');
-        const cedErr = card.querySelector('.ben-cedula-err');
-        if (!validateCedula(ced.value.trim())) {
-          ced.classList.add('error'); ok = false;
+        var cedEl  = card.querySelector('.ben-cedula');
+        var cedErr = card.querySelector('.ben-cedula-err');
+        if (!validateCedula(cedEl.value.trim())) {
+          cedEl.classList.add('error'); ok = false;
           if (cedErr) { cedErr.textContent = 'Cédula inválida (10 dígitos).'; cedErr.classList.add('show'); }
         } else {
-          ced.classList.remove('error');
+          cedEl.classList.remove('error');
           if (cedErr) cedErr.classList.remove('show');
         }
       });
@@ -1015,85 +1122,94 @@ function validateStep(step) {
 
   if (step === 3) {
     if (!document.getElementById('checkAcepto').checked) { showErr('err-acepto', 'Debe aceptar la declaración para continuar.'); ok = false; } else hideErr('err-acepto');
-    if (!document.getElementById('checkDatos').checked) { showErr('err-datos', 'Debe aceptar el tratamiento de datos.'); ok = false; } else hideErr('err-datos');
+    if (!document.getElementById('checkDatos').checked)  { showErr('err-datos',  'Debe aceptar el tratamiento de datos.');        ok = false; } else hideErr('err-datos');
   }
 
   return ok;
 }
 
+// ── NAVEGACIÓN ────────────────────────────────────────────────
 function goStep(dir) {
   if (dir === 1) {
     if (currentStep === STEPS.length - 1) { submitForm(); return; }
     if (!validateStep(currentStep)) return;
   }
-  document.getElementById(`step-${currentStep}`).classList.add('hidden');
+  document.getElementById('step-' + currentStep).classList.add('hidden');
   currentStep += dir;
-  document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+  document.getElementById('step-' + currentStep).classList.remove('hidden');
   if (currentStep === 3) buildResumen();
   updateProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// ── RESUMEN ───────────────────────────────────────────────────
 function buildResumen() {
-  const lbs = document.getElementById('peso').value;
-  const kg = lbs ? (parseFloat(lbs) * 0.453592).toFixed(1) : '—';
-  const bensRows = [];
-  document.querySelectorAll('.beneficiary-card').forEach(card => {
-    const nombre = card.querySelector('.ben-nombre').value;
-    const par = card.querySelector('.ben-parentesco').value;
-    const pct = card.querySelector('.ben-pct').value;
-    bensRows.push(`<div class="ben-resumen-row"><span><strong>${nombre}</strong> · ${par}</span><span>${pct}%</span></div>`);
+  var lbs = document.getElementById('peso').value;
+  var kg  = lbs ? (parseFloat(lbs) * 0.453592).toFixed(1) : '—';
+  var bensRows = [];
+  document.querySelectorAll('.beneficiary-card').forEach(function(card) {
+    var nombre = card.querySelector('.ben-nombre').value;
+    var par    = card.querySelector('.ben-parentesco').value;
+    var pct    = card.querySelector('.ben-pct').value;
+    bensRows.push('<div class="ben-resumen-row"><span><strong>' + nombre + '</strong> · ' + par + '</span><span>' + pct + '%</span></div>');
   });
-  const items = [
-    { k:'Cédula',     v: document.getElementById('cedula').value },
-    { k:'Edad',       v: document.getElementById('edad').value + ' años' },
-    { k:'Altura',     v: document.getElementById('altura').value + ' m' },
-    { k:'Peso',       v: lbs + ' lbs (' + kg + ' kg)' },
-    { k:'Profesión',  v: document.getElementById('profesion').value },
-    { k:'Ocupación',  v: document.getElementById('ocupacion').value },
-    { k:'RUC',        v: document.getElementById('ruc').value },
+  var items = [
+    { k: 'Cédula',     v: document.getElementById('cedula').value },
+    { k: 'Nombres',    v: document.getElementById('nombres').value },
+    { k: 'Correo',     v: document.getElementById('email').value },
+    { k: 'Edad',       v: document.getElementById('edad').value + ' años' },
+    { k: 'Altura',     v: document.getElementById('altura').value + ' m' },
+    { k: 'Peso',       v: lbs + ' lbs (' + kg + ' kg)' },
+    { k: 'Profesión',  v: document.getElementById('profesion').value },
+    { k: 'Ocupación',  v: document.getElementById('ocupacion').value },
+    { k: 'Rol',        v: document.getElementById('rolDesempena').value },
+    { k: 'RUC Empresa',v: document.getElementById('rucEmpresa').value },
   ];
-  document.getElementById('resumenFinal').innerHTML = `
-    <div class="resumen-grid">
-      ${items.map(i => `<div class="resumen-item"><div class="resumen-key">${i.k}</div><div class="resumen-val">${i.v || '—'}</div></div>`).join('')}
-    </div>
-    <div class="resumen-ben">
-      <div class="resumen-ben-title">Beneficiarios</div>
-      ${bensRows.join('')}
-    </div>`;
+  document.getElementById('resumenFinal').innerHTML =
+    '<div class="resumen-grid">' +
+    items.map(function(i) {
+      return '<div class="resumen-item"><div class="resumen-key">' + i.k + '</div><div class="resumen-val">' + (i.v || '—') + '</div></div>';
+    }).join('') +
+    '</div>' +
+    '<div class="resumen-ben"><div class="resumen-ben-title">Beneficiarios</div>' + bensRows.join('') + '</div>';
 }
 
+// ── ENVÍO ─────────────────────────────────────────────────────
 async function submitForm() {
   if (!validateStep(3)) return;
   document.getElementById('loadingOverlay').classList.add('show');
 
-  const lbs = document.getElementById('peso').value;
-  const kg = (parseFloat(lbs) * 0.453592).toFixed(1);
-  const beneficiarios = [];
-  document.querySelectorAll('.beneficiary-card').forEach(card => {
+  var lbs = document.getElementById('peso').value;
+  var kg  = (parseFloat(lbs) * 0.453592).toFixed(1);
+
+  var beneficiarios = [];
+  document.querySelectorAll('.beneficiary-card').forEach(function(card) {
     beneficiarios.push({
       nombre:     card.querySelector('.ben-nombre').value,
       parentesco: card.querySelector('.ben-parentesco').value,
       cedula:     card.querySelector('.ben-cedula').value,
+      fechaNac:   card.querySelector('.ben-fechanac')?.value || '',
       porcentaje: card.querySelector('.ben-pct').value,
     });
   });
 
-  const payload = {
+  var payload = {
     cedula:        document.getElementById('cedula').value,
+    nombres:       document.getElementById('nombres').value,
+    email:         document.getElementById('email').value,
     edad:          document.getElementById('edad').value,
     altura:        document.getElementById('altura').value,
     pesoLibras:    lbs,
     pesoKg:        kg,
     profesion:     document.getElementById('profesion').value,
     ocupacion:     document.getElementById('ocupacion').value,
-    ruc:           document.getElementById('ruc').value,
+    rolDesempena:  document.getElementById('rolDesempena').value,
+    rucEmpresa:    document.getElementById('rucEmpresa').value,
     beneficiarios: JSON.stringify(beneficiarios),
     timestamp:     new Date().toISOString(),
   };
 
   try {
-    // ← CORS fix: no-cors mode, Apps Script igual recibe los datos
     await fetch(APPS_SCRIPT_URL, {
       method:  'POST',
       mode:    'no-cors',
@@ -1104,13 +1220,11 @@ async function submitForm() {
     console.error('fetch error:', e);
   }
 
-  await new Promise(r => setTimeout(r, 2000));
+  await new Promise(function(r) { setTimeout(r, 2000); });
   document.getElementById('loadingOverlay').classList.remove('show');
-  document.getElementById('formCard').querySelectorAll('.form-step')
-    .forEach(s => s.classList.add('hidden'));
+  document.getElementById('formCard').querySelectorAll('.form-step').forEach(function(s) { s.classList.add('hidden'); });
   document.getElementById('navButtons').classList.add('hidden');
-  document.getElementById('successRef').textContent =
-    'Cédula de referencia: ' + payload.cedula;
+  document.getElementById('successRef').textContent = 'Cédula de referencia: ' + payload.cedula;
   document.getElementById('successScreen').classList.add('show');
   document.getElementById('progressFill').style.width = '100%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
